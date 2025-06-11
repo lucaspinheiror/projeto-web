@@ -96,3 +96,56 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+# Matrículas e Integrantes
+
+Lucas Pinheiro Rodrigues 
+UC23102565
+
+Rodrigo Pereira dos Santos
+UC23101382
+
+Muller Victor Pereira da Silva
+UC23102637
+
+Pedro Augusto Gonzaga Silva
+UC23100528
+
+Marcus Vinícius de Pontes Fonseca
+UC23101198
+
+Wesley Salvino de Farias
+UC23102961
+
+# Como executar a aplicação
+
+## 1. Clone o repositório
+
+Abra o git bash e execute os seguintes comandos
+
+```bash
+$ git clone https://github.com/lucaspinheiror/projeto-web
+
+$ cd nest-app
+```
+
+## 2. Instale as dependências
+
+Após entrar no projeto (nest-app) execute o comando abaixo no terminal
+
+```bash
+$ npm install
+```
+
+## 3. Execução
+
+No terminal execute
+
+```bash
+$ npm run start:dev
+``` 
+
+## 4. Acesse o Swagger
+
+Abra o navegador e acesse: http://localhost:3000/api
