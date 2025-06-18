@@ -1,4 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Favorito } from '../../favoritos/entities/favorito.entity';
+import { OneToMany } from 'typeorm';
 
 @Entity('produtos')
 export class Produto {
@@ -17,5 +19,8 @@ export class Produto {
 
     @Column({ type: 'date', nullable: false })
     dataValidade: Date;
+
+    @OneToMany(() => Favorito, favorito => favorito.produto)
+    favoritos: Favorito[];
 
 }

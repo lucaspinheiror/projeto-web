@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate, Unique } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate, Unique, OneToMany } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { IsEmail, IsOptional, IsString, Length } from 'class-validator';
 import { Exclude } from 'class-transformer';
+import { Favorito } from '../../favoritos/entities/favorito.entity';
 
 @Entity()
 @Unique(['email'])
@@ -33,6 +34,9 @@ export class User {
     @IsOptional()
     @IsString()
     role: 'user' | 'admin' | 'manager';
+
+    @OneToMany(() => Favorito, favorito => favorito.user)
+    favoritos: Favorito[];
 
     @BeforeInsert()
     @BeforeUpdate()

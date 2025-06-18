@@ -5,6 +5,8 @@ import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { RolesGuard } from 'src/auth/roles.guard';
+import { Roles } from 'src/auth/roles.decorator';
 
 @ApiTags('produtos')
 @Controller('produtos')
@@ -13,7 +15,8 @@ export class ProdutosController {
   constructor(private readonly produtosService: ProdutosService) {}
 
   @Post()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles('admin', 'manager') // Apenas admin e manager podem criar produtos
   @ApiOperation({ summary: 'Criar um novo produto' })
   @ApiResponse({ status: 201, description: 'Produto criado com sucesso.' })
   create(@Body() createProdutoDto: CreateProdutoDto) {
@@ -36,7 +39,8 @@ export class ProdutosController {
   }
 
   @Patch(':id')
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles('admin', 'manager') // Apenas admin e manager podem atualizar produtos
   @ApiOperation({ summary: 'Atualizar um produto pelo ID' })
   @ApiResponse({ status: 200, description: 'Produto atualizado com sucesso.' })
   @ApiResponse({ status: 404, description: 'Produto não encontrado.' })
@@ -45,7 +49,8 @@ export class ProdutosController {
   }
 
   @Delete(':id')
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles('admin') // Apenas admin pode remover produtos
   @ApiOperation({ summary: 'Remover um produto pelo ID' })
   @ApiResponse({ status: 200, description: 'Produto removido com sucesso.' })
   @ApiResponse({ status: 404, description: 'Produto não encontrado.' })

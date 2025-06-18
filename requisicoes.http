@@ -1,3 +1,5 @@
+# REQUISIÇÕES DE PRODUTOS
+
 ###
 GET http://localhost:3000/produtos HTTP/1.1
 
@@ -29,7 +31,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5vbWVVc
 DELETE http://localhost:3000/produtos/5 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5vbWVVc3VhcmlvIjoidXN1YXJpbzEiLCJpYXQiOjE3NDk1MDI0OTUsImV4cCI6MTc0OTUwNjA5NX0.g4bIPRgAFxSRDDfOVK-urY8z1rWAXLx14dNlK2qDg3g
 
-### registro de usuário
+
+# REQUISIÇÕES DE FAVORITOS
+
+### Adicionar um produto aos favoritos, precisa estar autenticado como user
+POST http://localhost:3000/favoritos/ID_DO_PRODUTO
+Authorization: Bearer // Aqui vai o token
+
+### Remove um produto dos favoritos, precisa estar autenticado como user
+DELETE http://localhost:3000/favoritos/ID_DO_PRODUTO
+Authorization: Bearer // Aqui vai o token
+
+### Listar produtos favoritos, precisa estar autenticado como user
+GET http://localhost:3000/favoritos
+Authorization: Bearer // Aqui vai o token
+
+
+# CADASTRO E AUTENTICAÇÃO   
+
+### Registro de usuário
 POST http://localhost:3000/auth/register HTTP/1.1
 Content-Type: application/json
 
@@ -40,7 +60,7 @@ Content-Type: application/json
     "email": "usuario1@email.com"
 }
 
-### login de usuário
+### Login de usuário
 POST http://localhost:3000/auth/login HTTP/1.1  
 Content-Type: application/json
 
