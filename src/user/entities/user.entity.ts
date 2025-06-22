@@ -4,6 +4,7 @@ import { IsEmail, IsOptional, IsString, Length } from 'class-validator';
 import { Exclude } from 'class-transformer';
 import { Favorito } from '../../favoritos/entities/favorito.entity';
 
+
 @Entity()
 @Unique(['email'])
 export class User {
@@ -41,7 +42,7 @@ export class User {
     @BeforeInsert()
     @BeforeUpdate()
     async hashPassword() {
-        if (this.senha && !this.senha.startsWith('$2a$')) { 
+        if (this.senha && !this.senha.startsWith('$2a$')) {
             this.senha = await bcrypt.hash(this.senha, 10);
         }
     }

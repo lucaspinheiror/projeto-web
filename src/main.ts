@@ -14,6 +14,7 @@ async function bootstrap() {
     .setTitle('Hortifruti')
     .setDescription('Teste de API para o sistema de hortifruti')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

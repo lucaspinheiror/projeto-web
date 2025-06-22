@@ -6,6 +6,7 @@ import { RegisterDto, LoginDto } from './dto/auth.dto';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { plainToInstance } from 'class-transformer';
+import { randomBytes } from 'crypto';
 
 @Injectable()
 export class AuthService {
@@ -30,7 +31,10 @@ export class AuthService {
     });
     await this.userRepository.save(user);
     // Remove a senha do retorno
-    return plainToInstance(User, user, { excludePrefixes: ['senha'] });
+    return {
+      message: 'Usuário registrado com sucesso!',
+      user: plainToInstance(User, user, { excludePrefixes: ['senha'] }),
+    };
   }
 
   async login(loginDto: LoginDto) {
@@ -40,6 +44,7 @@ export class AuthService {
     }
     const payload = { sub: user.id, nomeUsuario: user.nomeUsuario, role: user.role };
     return {
+      message: 'Login realizado com sucesso!',
       access_token: this.jwtService.sign(payload),
       user: plainToInstance(User, user, { excludePrefixes: ['senha'] }),
     };

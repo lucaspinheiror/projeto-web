@@ -15,7 +15,7 @@ export class FavoritosService {
     private readonly userRepository: Repository<User>,
     @InjectRepository(Produto)
     private readonly produtoRepository: Repository<Produto>,
-  ) {}
+  ) { }
 
   async addFavorito(userId: number, produtoId: number) {
     const user = await this.userRepository.findOne({ where: { id: userId } });
@@ -27,16 +27,24 @@ export class FavoritosService {
     if (exists) throw new ConflictException('Produto já está nos favoritos');
 
     const favorito = this.favoritoRepository.create({ user, produto });
-    return this.favoritoRepository.save(favorito);
+    await this.favoritoRepository.save(favorito);
+    return { message: 'Produto adicionado aos favoritos com sucesso', favorito };
   }
 
   async removeFavorito(userId: number, produtoId: number) {
     const favorito = await this.favoritoRepository.findOne({ where: { user: { id: userId }, produto: { id: produtoId } } });
     if (!favorito) throw new NotFoundException('Favorito não encontrado');
-    return this.favoritoRepository.remove(favorito);
+    await this.favoritoRepository.remove(favorito);
+    return { message: 'Produto removido dos favoritos com sucesso' };
   }
-  
+
   async listarFavoritos(userId: number) {
-    return this.favoritoRepository.find({ where: { user: { id: userId } }, relations: ['produto'] });
+    const favoritos = await this.favoritoRepository.find({ where: { user: { id: userId } }, relations: ['produto'] });
+    return {
+      message: favoritos.length
+        ? 'Lista de favoritos do usuário'
+        : 'O usuário não possui favoritos.',
+      favoritos: favoritos.map(fav => fav.produto),
+    };
   }
 }
