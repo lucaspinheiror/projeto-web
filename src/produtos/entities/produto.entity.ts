@@ -1,6 +1,8 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Favorito } from '../../favoritos/entities/favorito.entity';
 import { OneToMany } from 'typeorm';
+import { ManyToOne } from 'typeorm';
+import { Loja } from '../../loja/entities/loja.entity';
 
 @Entity('produtos')
 export class Produto {
@@ -22,5 +24,8 @@ export class Produto {
 
     @OneToMany(() => Favorito, favorito => favorito.produto)
     favoritos: Favorito[];
+
+    @ManyToOne(() => Loja, loja => loja.produtos)
+    loja: Loja;
 
 }

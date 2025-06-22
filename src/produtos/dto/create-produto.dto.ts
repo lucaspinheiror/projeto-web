@@ -1,6 +1,7 @@
 import { Type } from "class-transformer";
 import { IsDateString, IsNumber, IsString, Length, Max, Min } from "class-validator";
 import { ApiProperty } from '@nestjs/swagger';
+import { IsInt } from 'class-validator';
 
 export class CreateProdutoDto {
 
@@ -23,4 +24,7 @@ export class CreateProdutoDto {
     @ApiProperty({ example: '2023-10-15', description: 'Data de validade em formato ISO' })
     @IsDateString({}, { message: 'A data de validade deve estar em formato ISO.' })
     dataValidade: Date;
+
+    @IsInt()
+    lojaId: number;
 }

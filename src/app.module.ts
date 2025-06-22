@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { FavoritosModule } from './favoritos/favoritos.module';
+import { LojaModule } from './loja/loja.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { FavoritosModule } from './favoritos/favoritos.module';
     UserModule,
     AuthModule,
     FavoritosModule,
+    LojaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

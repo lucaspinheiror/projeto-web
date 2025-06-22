@@ -1,3 +1,40 @@
+# REQUISIÇÕES DE LOJA   
+
+###
+GET http://localhost:3000/loja HTTP/1.1
+
+###
+GET http://localhost:3000/loja/1 HTTP/1.1
+
+### Somente usuários admin e manager podem criar lojas
+POST http://localhost:3000/loja HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5vbWVVc3VhcmlvIjoiSm9hcXVpbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MDYxMzAzMywiZXhwIjoxNzUwNjE2NjMzfQ.HPT5J1RMJyRHym5LVzBjRmaUQnIp1sLYyfb68y6RZno
+
+{
+  "nome": "Horti do João",
+  "descricao": "Produtos de alta qualidade e preço baixo",
+  "endereco": "Rua das Margaridas, 456"
+}
+
+### Somente usuários admin e manager podem atualizar lojas
+PATCH http://localhost:3000/loja/2 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5vbWVVc3VhcmlvIjoiSm9hcXVpbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MDYxMzAzMywiZXhwIjoxNzUwNjE2NjMzfQ.HPT5J1RMJyRHym5LVzBjRmaUQnIp1sLYyfb68y6RZno
+
+{
+  "descricao": "Produtos frescos e orgânicos. Agora, também com produtos veganos"
+}
+
+### Somente usuários admin e manager podem deletar lojas
+DELETE http://localhost:3000/loja/2 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5vbWVVc3VhcmlvIjoiSm9hcXVpbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MDYxMzAzMywiZXhwIjoxNzUwNjE2NjMzfQ.HPT5J1RMJyRHym5LVzBjRmaUQnIp1sLYyfb68y6RZno
+
+
+
+
+
+
 # REQUISIÇÕES DE PRODUTOS
 
 ###
@@ -9,13 +46,14 @@ GET http://localhost:3000/produtos/1 HTTP/1.1
 ###
 POST http://localhost:3000/produtos HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5vbWVVc3VhcmlvIjoiTHVjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NTA2MDcwNDEsImV4cCI6MTc1MDYxMDY0MX0.rPw9aBX-5SXAO5YB4RsntlpwnbSG8oQc4Fno801GAuQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5vbWVVc3VhcmlvIjoiSm9hcXVpbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MDYxMzAzMywiZXhwIjoxNzUwNjE2NjMzfQ.HPT5J1RMJyRHym5LVzBjRmaUQnIp1sLYyfb68y6RZno
 
 {
-    "nome": "Maça",
-    "preco": 1.99,
-    "dataCriacao": "2023-10-01",
-    "dataValidade": "2023-10-15"
+    "nome": "Morango",
+    "preco": 2.99,
+    "dataCriacao": "2025-10-26",
+    "dataValidade": "2026-10-15",
+    "lojaId": 2
 }
 
 ### 
@@ -28,8 +66,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5vbWVVc
 }
 
 ### 
-DELETE http://localhost:3000/produtos/5 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5vbWVVc3VhcmlvIjoiTHVjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NTA2MDcwNDEsImV4cCI6MTc1MDYxMDY0MX0.rPw9aBX-5SXAO5YB4RsntlpwnbSG8oQc4Fno801GAuQ
+DELETE http://localhost:3000/produtos/6 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5vbWVVc3VhcmlvIjoiSm9hcXVpbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MDYxMzAzMywiZXhwIjoxNzUwNjE2NjMzfQ.HPT5J1RMJyRHym5LVzBjRmaUQnIp1sLYyfb68y6RZno
+
+
 
 
 # REQUISIÇÕES DE FAVORITOS
@@ -45,6 +85,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5vbWVVc
 ### Listar produtos favoritos, precisa estar autenticado como user
 GET http://localhost:3000/favoritos
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5vbWVVc3VhcmlvIjoiTHVjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NTA2MDcwNDEsImV4cCI6MTc1MDYxMDY0MX0.rPw9aBX-5SXAO5YB4RsntlpwnbSG8oQc4Fno801GAuQ
+
+
+
 
 
 # CADASTRO E AUTENTICAÇÃO   
