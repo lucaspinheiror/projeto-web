@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+
+.back-button {
+  position: absolute;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  padding: 1rem;
+}
+
+.container-form {
+
+    position: absolute;
+    bottom: 0;
+
+    background-color: whitesmoke;
+    height: 50vh;
+    width: 100%;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.form-login {
+    width: 90%;
+    margin: auto;
+}
+
+.form-inputs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-inputs-container input {
+    background-color: transparent;
+    width: 90%;
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.buttons {
+    margin-top: 3rem;
+    background-color: rgb(8, 201, 8);
+    border-radius: 2rem;
+    width: 70%;
+    padding: 1rem;
+    color: whitesmoke;
+}
+
+.buttons:hover {
+    border: 1px solid rgb(8, 201, 8);
+}
+
+.button-secundario {
+    margin-top: 0;
+    background-color: transparent;
+    border: 1px solid rgb(8, 201, 8);
+    color: rgb(8, 201, 8);
+}
+
+/*erro caso não exista usuário*/
+.erro-login {
+  color: #d32f2f;
+  background: #fff0f0;
+  border: 1px solid #d32f2f;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 1rem;
+}
