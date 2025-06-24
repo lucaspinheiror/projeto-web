@@ -22,3 +22,11 @@ git clone https://github.com/lucaspinheiror/projeto-web.git
 ```bash
 cd nest-app
 ``` 
+- 3 Instale as dependências
+```bash
+npm install
+```
+- 4 Execute o servidor
+```bash
+npm run star:dev
+```
