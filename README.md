@@ -11,3 +11,10 @@ Pedro Augusto Gonzaga Silva UC23100528
 Marcus Vinícius de Pontes Fonseca UC23101198
 
 Wesley Salvino de Farias UC23102961
+
+# Execução do projeto 
+
+- 1. Clone o repositório
+     ```bash
+     git clone https://github.com/lucaspinheiror/projeto-web.git
+     ```
