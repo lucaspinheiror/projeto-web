@@ -30,3 +30,6 @@ npm install
 ```bash
 npm run star:dev
 ```
+
+# Link do vídeo 
+https://youtu.be/rvlj_3ys1WA
