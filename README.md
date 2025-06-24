@@ -14,7 +14,11 @@ Wesley Salvino de Farias UC23102961
 
 # Execução do projeto 
 
-- 1. Clone o repositório
-     ```bash
-     git clone https://github.com/lucaspinheiror/projeto-web.git
-     ```
+- 1 Clone o repositório
+```bash
+git clone https://github.com/lucaspinheiror/projeto-web.git
+```
+- 2 Entre na pasta do back-end
+```bash
+cd nest-app
+``` 
