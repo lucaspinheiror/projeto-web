@@ -28,7 +28,7 @@ npm install
 ```
 - 4 Execute o servidor
 ```bash
-npm run star:dev
+npm run start:dev
 ```
 
 # Link do vídeo 
